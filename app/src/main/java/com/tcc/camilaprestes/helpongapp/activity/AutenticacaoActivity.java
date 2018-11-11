@@ -84,7 +84,7 @@ public class AutenticacaoActivity extends AppCompatActivity {
     }
 
     private void abrirTelaPrincipal(){
-        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        startActivity(new Intent(getApplicationContext(), AutenticacaoActivity.class));
     }
 
     private void inicializaComponentes(){
