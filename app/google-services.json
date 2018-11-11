@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "658513108767",
+    "firebase_url": "https://helpongapp-8c872.firebaseio.com",
+    "project_id": "helpongapp-8c872",
+    "storage_bucket": "helpongapp-8c872.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658513108767:android:cc752bfd0c9367e5",
+        "android_client_info": {
+          "package_name": "com.tcc.camilaprestes.helpongapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658513108767-919jbjg6eq7tft4o7q1b2b632mjs2ojp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tcc.camilaprestes.helpongapp",
+            "certificate_hash": "9712047964ece8c157f7ca18ed2b4673d2eb6f73"
+          }
+        },
+        {
+          "client_id": "658513108767-jb3dq12fkarm8qgna78gakaf2l379kae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgTdrKeFrWu-7v_RYzrwWvRnKxNsONQkw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658513108767-jb3dq12fkarm8qgna78gakaf2l379kae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
