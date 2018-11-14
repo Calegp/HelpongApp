@@ -20,7 +20,6 @@ public class AutenticacaoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_autenticacao);
-        getSupportActionBar().hide();
 
         botaoAcesso = findViewById(R.id.buttonAcesso);
         botaoAcesso.setOnClickListener(new View.OnClickListener() {

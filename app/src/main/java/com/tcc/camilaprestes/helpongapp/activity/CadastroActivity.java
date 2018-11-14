@@ -29,7 +29,6 @@ public class CadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-        getSupportActionBar().hide();
 
         nome = findViewById(R.id.nomeONG);
         descricao = findViewById(R.id.descricaoONG);

@@ -45,9 +45,14 @@
         <activity
             android:name=".activity.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".activity.LoginActivity"></activity>
-        <activity android:name=".activity.CadastroActivity"></activity>
-        <activity android:name=".activity.PerfilOngActivity"></activity>
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.CadastroActivity" />
+        <activity android:name=".activity.PerfilOngActivity" />
+        <activity android:name=".activity.ConfiguracoesONGActivity"
+            android:parentActivityName=".activity.PerfilOngActivity"/>
+        <activity android:name=".activity.NovoItemONGActivity"
+            android:parentActivityName=".activity.PerfilOngActivity">
+        </activity>
     </application>
 
 </manifest>
