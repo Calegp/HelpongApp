@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.tcc.camilaprestes.helpongapp.R;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
 import com.tcc.camilaprestes.helpongapp.model.Item;
@@ -44,14 +43,15 @@ public class NovoItemONGActivity extends AppCompatActivity {
                 Item item = new Item();
                 item.setIdONG( idONGLogado );
                 item.setNome( nome );
+                item.setTipo(tipo);
                 item.salvar();
                 finish();
 
             }else{
-                exibirMensagem("Digite o nome do item");
+                exibirMensagem("Digite o tipo do item");
             }
         }else{
-            exibirMensagem("Digite o tipo do item");
+            exibirMensagem("Digite o nome do item");
         }
 
     }
