@@ -24,6 +24,8 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+
+
     private void inicializarComponentes(){
            editNome = findViewById(R.id.editNome);
            editDescricao = findViewById(R.id.descricaoONG);

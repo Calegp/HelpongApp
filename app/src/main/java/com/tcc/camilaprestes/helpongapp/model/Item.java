@@ -11,29 +11,29 @@ public class Item  {
 
     public Item() {
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
-        DatabaseReference produtoRef = firebaseRef
-                .child("produtos");
-        setIdItem(produtoRef.push().getKey() );
+        DatabaseReference itemRef = firebaseRef
+                .child("itens");
+        setIdItem(itemRef.push().getKey() );
     }
 
     public void salvar(){
 
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
-        DatabaseReference produtoRef = firebaseRef
-                .child("produtos")
+        DatabaseReference itemRef = firebaseRef
+                .child("itens")
                 .child( getIdONG() )
-                .child( getIdItem() );
-        produtoRef.setValue(this);
+                .child(getIdItem());
+        itemRef.setValue(this);
 
     }
 
     public void remover(){
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
-        DatabaseReference produtoRef = firebaseRef
-                .child("produtos")
+        DatabaseReference itemRef = firebaseRef
+                .child("itens")
                 .child( getIdONG() )
                 .child( getIdItem() );
-        produtoRef.removeValue();
+        itemRef.removeValue();
     }
 
     public String getIdONG() {

@@ -9,6 +9,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.tcc.camilaprestes.helpongapp.R;
 import com.tcc.camilaprestes.helpongapp.adapter.AdapterItem;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
+import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
+import com.tcc.camilaprestes.helpongapp.listener.RecyclerItemClickListener;
 import com.tcc.camilaprestes.helpongapp.model.Item;
 
 import java.util.ArrayList;
@@ -40,7 +45,7 @@ public class PerfilOngActivity extends AppCompatActivity {
 
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         firebaseRef = ConfiguracaoFirebase.getFirebase();
-        idONGLogado = ConfiguracaoFirebase.getIdONG();
+        idONGLogado = OrganizacaoFirebase.getIdONG();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Perfil - ONG");
@@ -53,13 +58,39 @@ public class PerfilOngActivity extends AppCompatActivity {
 
         recuperarItens();
 
+        recyclerItens.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        this,
+                        recyclerItens,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
 
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Item itemSelecionado = itens.get(position);
+                                itemSelecionado.remover();
+                                Toast.makeText(PerfilOngActivity.this,
+                                        "Item excluido com sucesso!",
+                                        Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+                )
+        );
     }
 
     private void recuperarItens(){
         DatabaseReference itensRef = firebaseRef
                 .child("itens")
-                .child("idONGLogado");
+                .child(idONGLogado);
 
         itensRef.addValueEventListener(new ValueEventListener() {
             @Override

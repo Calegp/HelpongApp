@@ -10,6 +10,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class OrganizacaoFirebase {
+
+    public static String getIdONG(){
+
+        FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        return autenticacao.getCurrentUser().getUid();
+
+    }
+
     public static FirebaseUser getOngAtual(){
         FirebaseAuth ong = ConfiguracaoFirebase.getFirebaseAutenticacao();
         return ong.getCurrentUser();
