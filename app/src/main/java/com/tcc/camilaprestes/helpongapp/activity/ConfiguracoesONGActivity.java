@@ -73,7 +73,7 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
 
     }
 
-    public void validarDadosItem(View view){
+    public void validarDadosONG(View view){
 
         //Valida se os campos foram preenchidos
         String nome = editNome.getText().toString();

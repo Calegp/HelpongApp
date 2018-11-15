@@ -14,6 +14,10 @@ public class Organizacao {
     private String senha;
 
     public Organizacao() {
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference ongRef = firebaseRef
+                .child("ong");
+        setId(ongRef.push().getKey() );
     }
 
     public void salvar(){
@@ -21,6 +25,14 @@ public class Organizacao {
         DatabaseReference ongs = firebaseRef.child("ongs").child(getId());
 
         ongs.setValue(this);
+    }
+
+    public void excluir(){
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference ong = firebaseRef
+                .child("ong")
+                .child( getId() );
+        ong.removeValue();
     }
 
     public String getId() {

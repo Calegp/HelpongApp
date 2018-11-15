@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -22,55 +22,121 @@
             android:id="@+id/editNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/background_caixa_texto"
             android:ems="10"
             android:hint="Nome da ONG"
             android:inputType="text"
-            android:padding="16dp" />
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/editEndereco"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.97"
+            app:layout_constraintVertical_chainStyle="spread" />
 
         <EditText
             android:id="@+id/editEndereco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-2dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/bg_edit_text"
             android:ems="10"
             android:hint="Endereço"
             android:inputType="text"
-            android:padding="16dp" />
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/editDescricao"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editNome" />
 
         <EditText
             android:id="@+id/editDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-2dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/bg_edit_text"
             android:ems="10"
             android:hint="Descrição"
             android:inputType="text"
-            android:padding="16dp" />
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/editResponsavel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editEndereco" />
 
         <EditText
             android:id="@+id/editResponsavel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-2dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/bg_edit_text"
             android:ems="10"
             android:hint="Responsável"
             android:inputType="text"
-            android:padding="16dp" />
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonAcesso2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editDescricao" />
 
         <Button
             android:id="@+id/buttonAcesso2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/green"
             android:onClick="validarDadosONG"
             android:padding="16dp"
             android:text="Salvar"
-            android:theme="@style/botaoPadrao" />
+            android:theme="@style/botaoPadrao"
+            app:layout_constraintBottom_toTopOf="@+id/buttonDesativar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.33"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editResponsavel" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/buttonDesativar"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Desativar conta"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/buttonExcluir"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAcesso2" />
+
+        <Button
+            android:id="@+id/buttonExcluir"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingBottom=""
+            android:text="Excluir conta"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonDesativar" />
+
+    </android.support.constraint.ConstraintLayout>
 
 
 </LinearLayout>
