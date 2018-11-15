@@ -1,6 +1,8 @@
 package com.tcc.camilaprestes.helpongapp.activity;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +20,12 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.tcc.camilaprestes.helpongapp.R;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
+import com.tcc.camilaprestes.helpongapp.model.EnderecoONG;
 import com.tcc.camilaprestes.helpongapp.model.Organizacao;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class CadastroActivity extends AppCompatActivity {
     private EditText nome, descricao, endereco, email, responsavel, senha;
@@ -47,37 +54,44 @@ public class CadastroActivity extends AppCompatActivity {
         String textoResponsavel = responsavel.getText().toString();
         String textoSenha = senha.getText().toString();
 
+
+        Address addressEndereco = recuperaEndereco(textoEndereco);
+        if(addressEndereco != null){
+            EnderecoONG enderecoONG = new EnderecoONG();
+            enderecoONG.setCidade(addressEndereco.getAdminArea());
+            enderecoONG.setCep(addressEndereco.getPostalCode());
+            enderecoONG.setBairro(addressEndereco.getSubLocality());
+            enderecoONG.setRua(addressEndereco.getThoroughfare());
+            enderecoONG.setNumero(addressEndereco.getFeatureName());
+            enderecoONG.setLatitude(String.valueOf(addressEndereco.getLatitude()));
+            enderecoONG.setLongitude(String.valueOf(addressEndereco.getLongitude()));
+        }
+
         if(!textoNome.isEmpty()){
             if(!textoDescricao.isEmpty()){
-                if(!textoEndereco.isEmpty()){
-                    if(!textoEmail.isEmpty()){
-                        if(!textoResponsavel.isEmpty()){
-                            if(!textoSenha.isEmpty()){
-                                Organizacao ong = new Organizacao();
-                                ong.setNome(textoNome);
-                                ong.setDescricao(textoDescricao);
-                                ong.setEndereco(textoEndereco);
-                                ong.setEmail(textoEmail);
-                                ong.setResponsavel(textoResponsavel);
-                                ong.setSenha(textoSenha);
+                if(!textoEmail.isEmpty()){
+                    if(!textoResponsavel.isEmpty()){
+                        if(!textoSenha.isEmpty()){
+                            Organizacao ong = new Organizacao();
+                            ong.setNome(textoNome);
+                            ong.setDescricao(textoDescricao);
+                            ong.setEndereco(textoEndereco);
+                            ong.setEmail(textoEmail);
+                            ong.setResponsavel(textoResponsavel);
+                            ong.setSenha(textoSenha);
 
-                                cadastrarONG(ong);
-
-                            }
-                            else{
-                                Toast.makeText(this, "Preencha a senha", Toast.LENGTH_SHORT).show();
-                            }
+                            cadastrarONG(ong);
                         }
                         else{
-                            Toast.makeText(this, "Preencha o nome do responsável", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Preencha a senha", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else{
-                        Toast.makeText(this, "Preencha o email da ong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Preencha o nome do responsável", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else{
-                    Toast.makeText(this, "Preencha o endereco da ONG", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Preencha o email da ong", Toast.LENGTH_SHORT).show();
                 }
             }
             else{
@@ -137,6 +151,24 @@ public class CadastroActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private Address recuperaEndereco(String endereco){
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> listaEnderecos = geocoder.getFromLocationName(endereco,1);
+            if(listaEnderecos != null && listaEnderecos.size() > 0){
+                Address address = listaEnderecos.get(0);
+
+                double lat = address.getLatitude();
+                double lon = address.getLongitude();
+
+                return address;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  null;
     }
 
 

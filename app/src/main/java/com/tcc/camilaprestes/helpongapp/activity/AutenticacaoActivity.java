@@ -13,8 +13,8 @@ import com.tcc.camilaprestes.helpongapp.R;
 
 public class AutenticacaoActivity extends AppCompatActivity {
 
-    private Button botaoAcesso, botaoAcessoONG;
-    private Switch tipoAcesso;
+    private Button botaoAcesso;
+    private TextView btnLogin, btnCadastro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +29,20 @@ public class AutenticacaoActivity extends AppCompatActivity {
             }
         });
 
-        botaoAcessoONG = findViewById(R.id.buttonAcessoONG);
-        tipoAcesso = findViewById(R.id.tipoAcesso);
-        botaoAcessoONG.setOnClickListener(new View.OnClickListener() {
+        btnLogin = findViewById(R.id.txtLogin);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tipoAcesso.isChecked()){
-                    startActivity(new Intent(getApplicationContext(), CadastroActivity.class));
-                }
-                else{
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 }
 
+            });
+
+        btnCadastro = findViewById(R.id.txtCadastro);
+        btnCadastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), CadastroActivity.class));
             }
         });
     }
