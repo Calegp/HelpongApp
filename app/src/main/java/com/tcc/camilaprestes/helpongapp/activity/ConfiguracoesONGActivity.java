@@ -34,8 +34,6 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
         firebaseRef = ConfiguracaoFirebase.getFirebase();
         idONGLogado = OrganizacaoFirebase.getIdONG();
 
-        idONGLogado = OrganizacaoFirebase.getIdONG();
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Configurações");
         setSupportActionBar(toolbar);
