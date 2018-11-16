@@ -11,7 +11,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 import com.tcc.camilaprestes.helpongapp.R;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
@@ -19,8 +18,7 @@ import com.tcc.camilaprestes.helpongapp.model.Organizacao;
 
 public class ConfiguracoesONGActivity extends AppCompatActivity {
 
-    private EditText editNome, editEndereco, editResponsavel, editDescricao;
-    private StorageReference storageReference;
+    private EditText editNome, editEnderecoONG, editResponsavelONG, editDescricaoONG;
     private DatabaseReference firebaseRef;
     private String idONGLogado;
 
@@ -30,7 +28,6 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
         setContentView(R.layout.activity_configuracoes_ong);
 
         inicializarComponentes();
-        storageReference = ConfiguracaoFirebase.getFirebaseStorage();
         firebaseRef = ConfiguracaoFirebase.getFirebase();
         idONGLogado = OrganizacaoFirebase.getIdONG();
 
@@ -55,9 +52,9 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
                 if( dataSnapshot.getValue() != null ){
                     Organizacao ong = dataSnapshot.getValue(Organizacao.class);
                     editNome.setText(ong.getNome());
-                    editEndereco.setText(ong.getEndereco());
-                    editDescricao.setText(ong.getDescricao());
-                    editResponsavel.setText(ong.getResponsavel());
+                    editDescricaoONG.setText(ong.getDescricao());
+                    editResponsavelONG.setText(ong.getResponsavel());
+                    editEnderecoONG.setText(ong.getEndereco());
                 }
             }
 
@@ -73,9 +70,9 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
 
         //Valida se os campos foram preenchidos
         String nome = editNome.getText().toString();
-        String endereco = editEndereco.getText().toString();
-        String responsavel = editResponsavel.getText().toString();
-        String descricao = editDescricao.getText().toString();
+        String endereco = editEnderecoONG.getText().toString();
+        String responsavel = editResponsavelONG.getText().toString();
+        String descricao = editDescricaoONG.getText().toString();
 
         if( !nome.isEmpty()){
             if(!endereco.isEmpty()){
@@ -112,8 +109,8 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
 
     private void inicializarComponentes(){
            editNome = findViewById(R.id.editNome);
-           editDescricao = findViewById(R.id.descricaoONG);
-           editEndereco = findViewById(R.id.enderecoONG);
-           editResponsavel = findViewById(R.id.responsavelONG);
+           editDescricaoONG = findViewById(R.id.editDescricao);
+           editEnderecoONG = findViewById(R.id.editEndereco);
+           editResponsavelONG = findViewById(R.id.editResponsavel);
     }
 }
