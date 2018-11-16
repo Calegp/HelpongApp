@@ -47,7 +47,7 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
     private void recuperarDadosONG(){
 
         DatabaseReference ongRef = firebaseRef
-                .child("empresas")
+                .child("ongs")
                 .child( idONGLogado );
 
         ongRef.addValueEventListener(new ValueEventListener() {
@@ -58,11 +58,9 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
                     Organizacao ong = dataSnapshot.getValue(Organizacao.class);
                     editNome.setText(ong.getNome());
                     editEndereco.setText(ong.getEndereco());
-                    editDescricao.setText(ong.getDescricao().toString());
+                    editDescricao.setText(ong.getDescricao());
                     editResponsavel.setText(ong.getResponsavel());
-
                 }
-
             }
 
             @Override
