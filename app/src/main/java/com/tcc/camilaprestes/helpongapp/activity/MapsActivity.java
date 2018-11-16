@@ -49,6 +49,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        editLocal = findViewById(R.id.editLocal);
+
         //Validar permissões
         Permissoes.validarPermissoes(permissoes, this, 1);
 
@@ -130,7 +132,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Address addressLocal = recuperarEndereco(novaLocalizacao);
             if(addressLocal != null){
                 EnderecoUsuario enderecoUsuario = new EnderecoUsuario();
-                enderecoUsuario.setCidade(addressLocal.getAdminArea());
+                enderecoUsuario.setCidade(addressLocal.getSubAdminArea());
                 enderecoUsuario.setCep(addressLocal.getPostalCode());
                 enderecoUsuario.setBairro(addressLocal.getSubLocality());
                 enderecoUsuario.setRua(addressLocal.getThoroughfare());
