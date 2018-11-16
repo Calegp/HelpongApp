@@ -23,6 +23,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tcc.camilaprestes.helpongapp.R;
@@ -87,7 +89,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 mMap.clear();
                 LatLng localUsuario = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().position(localUsuario).title("Meu local"));
+                mMap.addMarker(new MarkerOptions()
+                        .position(localUsuario)
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.mylocation))
+                        .title("Meu local"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(localUsuario,15));
 
             }
@@ -129,9 +134,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String novaLocalizacao = editLocal.getText().toString();
 
         if(!novaLocalizacao.equals("") || novaLocalizacao != null){
-            Address addressLocal = recuperarEndereco(novaLocalizacao);
+            final Address addressLocal = recuperarEndereco(novaLocalizacao);
             if(addressLocal != null){
-                EnderecoUsuario enderecoUsuario = new EnderecoUsuario();
+                final EnderecoUsuario enderecoUsuario = new EnderecoUsuario();
                 enderecoUsuario.setCidade(addressLocal.getSubAdminArea());
                 enderecoUsuario.setCep(addressLocal.getPostalCode());
                 enderecoUsuario.setBairro(addressLocal.getSubLocality());
@@ -153,6 +158,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                LatLng novoLocal = new LatLng(addressLocal.getLatitude(), addressLocal.getLongitude());
+                                mMap.addMarker(new MarkerOptions().position(novoLocal).title(enderecoUsuario.getRua()));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(novoLocal,15));
 
                             }
                         }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
