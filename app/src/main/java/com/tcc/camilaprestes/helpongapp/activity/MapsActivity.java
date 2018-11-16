@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -13,6 +15,9 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,8 +27,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tcc.camilaprestes.helpongapp.R;
 import com.tcc.camilaprestes.helpongapp.helper.Permissoes;
+import com.tcc.camilaprestes.helpongapp.model.EnderecoUsuario;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    private EditText editLocal;
 
     private GoogleMap mMap;
     private String[] permissoes = new String[]{
@@ -109,6 +121,71 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             );
         }
 
+    }
+
+    public void mudarLocalizacao(View view){
+        String novaLocalizacao = editLocal.getText().toString();
+
+        if(!novaLocalizacao.equals("") || novaLocalizacao != null){
+            Address addressLocal = recuperarEndereco(novaLocalizacao);
+            if(addressLocal != null){
+                EnderecoUsuario enderecoUsuario = new EnderecoUsuario();
+                enderecoUsuario.setCidade(addressLocal.getAdminArea());
+                enderecoUsuario.setCep(addressLocal.getPostalCode());
+                enderecoUsuario.setBairro(addressLocal.getSubLocality());
+                enderecoUsuario.setRua(addressLocal.getThoroughfare());
+                enderecoUsuario.setNumero(addressLocal.getFeatureName());
+                enderecoUsuario.setLatitude(String.valueOf(addressLocal.getLatitude()));
+                enderecoUsuario.setLongitude(String.valueOf(addressLocal.getLongitude()));
+
+                StringBuilder mensagem = new StringBuilder();
+                mensagem.append("Cidade: " + enderecoUsuario.getCidade());
+                mensagem.append("\nRua: " + enderecoUsuario.getRua());
+                mensagem.append("\nBairro: " + enderecoUsuario.getBairro());
+                mensagem.append("\nNúmero: " + enderecoUsuario.getNumero());
+                mensagem.append("\nCep: " + enderecoUsuario.getCep());
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                        .setTitle("Confirme a localização")
+                        .setMessage(mensagem)
+                        .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+
+        }else{
+            Toast.makeText(this, "Informe uma localização", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private Address recuperarEndereco(String endereco){
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> listaEnderecos = geocoder.getFromLocationName(endereco,1);
+            if(listaEnderecos != null && listaEnderecos.size() > 0){
+                Address address = listaEnderecos.get(0);
+
+                double lat = address.getLatitude();
+                double lon = address.getLongitude();
+
+                return address;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     @Override
