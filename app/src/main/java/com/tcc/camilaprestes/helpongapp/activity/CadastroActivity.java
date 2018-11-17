@@ -55,32 +55,39 @@ public class CadastroActivity extends AppCompatActivity {
         String textoSenha = senha.getText().toString();
 
 
-        Address addressEndereco = recuperaEndereco(textoEndereco);
-        if(addressEndereco != null){
-            EnderecoONG enderecoONG = new EnderecoONG();
-            enderecoONG.setCidade(addressEndereco.getAdminArea());
-            enderecoONG.setCep(addressEndereco.getPostalCode());
-            enderecoONG.setBairro(addressEndereco.getSubLocality());
-            enderecoONG.setRua(addressEndereco.getThoroughfare());
-            enderecoONG.setNumero(addressEndereco.getFeatureName());
-            enderecoONG.setLatitude(String.valueOf(addressEndereco.getLatitude()));
-            enderecoONG.setLongitude(String.valueOf(addressEndereco.getLongitude()));
-        }
-
         if(!textoNome.isEmpty()){
             if(!textoDescricao.isEmpty()){
                 if(!textoEmail.isEmpty()){
                     if(!textoResponsavel.isEmpty()){
                         if(!textoSenha.isEmpty()){
-                            Organizacao ong = new Organizacao();
-                            ong.setNome(textoNome);
-                            ong.setDescricao(textoDescricao);
-                            ong.setEndereco(textoEndereco);
-                            ong.setEmail(textoEmail);
-                            ong.setResponsavel(textoResponsavel);
-                            ong.setSenha(textoSenha);
 
-                            cadastrarONG(ong);
+                            Address addressEndereco = recuperaEndereco(textoEndereco);
+
+                            if(addressEndereco != null){
+                                EnderecoONG enderecoONG = new EnderecoONG();
+                                enderecoONG.setCidade(addressEndereco.getAdminArea());
+                                enderecoONG.setCep(addressEndereco.getPostalCode());
+                                enderecoONG.setBairro(addressEndereco.getSubLocality());
+                                enderecoONG.setRua(addressEndereco.getThoroughfare());
+                                enderecoONG.setNumero(addressEndereco.getFeatureName());
+                                enderecoONG.setLatitude(String.valueOf(addressEndereco.getLatitude()));
+                                enderecoONG.setLongitude(String.valueOf(addressEndereco.getLongitude()));
+                                enderecoONG.salvarEndereco();
+                                finish();
+
+                                Organizacao ong = new Organizacao();
+                                ong.setNome(textoNome);
+                                ong.setDescricao(textoDescricao);
+                                ong.setEndereco(textoEndereco);
+                                ong.setEmail(textoEmail);
+                                ong.setResponsavel(textoResponsavel);
+                                ong.setSenha(textoSenha);
+
+                                cadastrarONG(ong);
+                            }
+                            else{
+                                Toast.makeText(this, "Endereço inválido", Toast.LENGTH_SHORT).show();
+                            }
                         }
                         else{
                             Toast.makeText(this, "Preencha a senha", Toast.LENGTH_SHORT).show();

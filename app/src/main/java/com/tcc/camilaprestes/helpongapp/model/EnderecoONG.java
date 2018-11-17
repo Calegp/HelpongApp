@@ -1,6 +1,11 @@
 package com.tcc.camilaprestes.helpongapp.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
+
 public class EnderecoONG {
+    private String idONG;
+    private String idEndereco;
     private String rua;
     private String numero;
     private String cidade;
@@ -11,7 +16,38 @@ public class EnderecoONG {
     private String longitude;
 
     public EnderecoONG() {
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference enderecoRef = firebaseRef
+                .child("enderecos");
+        setIdEndereco(enderecoRef.push().getKey());
+    }
 
+    public void salvarEndereco(){
+
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference itemRef = firebaseRef
+                .child("enderecos")
+                .child( getIdONG() )
+                .child(getIdEndereco());
+        itemRef.setValue(this);
+
+    }
+
+
+    public String getIdONG() {
+        return idONG;
+    }
+
+    public void setIdONG(String idONG) {
+        this.idONG = idONG;
+    }
+
+    public String getIdEndereco() {
+        return idEndereco;
+    }
+
+    public void setIdEndereco(String idEndereco) {
+        this.idEndereco = idEndereco;
     }
 
     public String getRua() {
