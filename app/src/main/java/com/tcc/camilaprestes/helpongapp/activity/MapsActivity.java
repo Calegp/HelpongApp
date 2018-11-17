@@ -26,24 +26,34 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.tcc.camilaprestes.helpongapp.R;
+import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
+import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.Permissoes;
+import com.tcc.camilaprestes.helpongapp.model.EnderecoONG;
 import com.tcc.camilaprestes.helpongapp.model.EnderecoUsuario;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private EditText editLocal;
-
+    private List<EnderecoONG> enderecosONG = new ArrayList<>();
     private GoogleMap mMap;
     private String[] permissoes = new String[]{
             Manifest.permission.ACCESS_FINE_LOCATION
     };
     private LocationManager locationManager;
     private LocationListener locationListener;
+    private DatabaseReference firebaseRef;
+    private String idONGLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +61,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         editLocal = findViewById(R.id.editLocal);
+        firebaseRef = ConfiguracaoFirebase.getFirebase();
+        idONGLogado = OrganizacaoFirebase.getIdONG();
 
         //Validar permissões
         Permissoes.validarPermissoes(permissoes, this, 1);
@@ -86,7 +98,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Double latitude = location.getLatitude();
                 Double longitude = location.getLongitude();
 
-                mMap.clear();
                 LatLng localUsuario = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions()
                         .position(localUsuario)
@@ -112,6 +123,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
 
+        recuperarEnderecos();
+
         /*
          * 1) Provedor da localização
          * 2) Tempo mínimo entre atualizacões de localização (milesegundos)
@@ -121,7 +134,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
-                    0,
+                    100000,
                     0,
                     locationListener
             );
@@ -211,7 +224,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     locationManager.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
-                            0,
+                            10000,
                             0,
                             locationListener
                     );
@@ -238,6 +251,38 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         AlertDialog dialog = builder.create();
         dialog.show();
 
+    }
+
+    private void recuperarEnderecos(){
+        DatabaseReference enderRef = firebaseRef
+                .child("enderecos")
+                .child(idONGLogado);
+
+        enderRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                enderecosONG.clear();
+                for(DataSnapshot ds: dataSnapshot.getChildren()){
+                    enderecosONG.add(ds.getValue(EnderecoONG.class));
+                }
+
+                for (EnderecoONG end: enderecosONG) {
+                    Double latitude = Double.parseDouble(end.getLatitude());
+                    Double longitude = Double.parseDouble(end.getLongitude());
+
+                    LatLng localONG = new LatLng(latitude,longitude);
+                    mMap.addMarker(new MarkerOptions()
+                            .position(localONG)
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                            .title(end.getRua()));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }
