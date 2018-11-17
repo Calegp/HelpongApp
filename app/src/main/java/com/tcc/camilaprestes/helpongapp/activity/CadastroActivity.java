@@ -72,8 +72,6 @@ public class CadastroActivity extends AppCompatActivity {
                                 enderecoONG.setNumero(addressEndereco.getFeatureName());
                                 enderecoONG.setLatitude(String.valueOf(addressEndereco.getLatitude()));
                                 enderecoONG.setLongitude(String.valueOf(addressEndereco.getLongitude()));
-                                enderecoONG.salvarEndereco();
-                                finish();
 
                                 Organizacao ong = new Organizacao();
                                 ong.setNome(textoNome);
@@ -83,7 +81,7 @@ public class CadastroActivity extends AppCompatActivity {
                                 ong.setResponsavel(textoResponsavel);
                                 ong.setSenha(textoSenha);
 
-                                cadastrarONG(ong);
+                                cadastrarONG(ong, enderecoONG);
                             }
                             else{
                                 Toast.makeText(this, "Endereço inválido", Toast.LENGTH_SHORT).show();
@@ -113,7 +111,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
-    public void cadastrarONG(final Organizacao ong){
+    public void cadastrarONG(final Organizacao ong, final EnderecoONG enderecoONG){
 
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(
@@ -126,6 +124,8 @@ public class CadastroActivity extends AppCompatActivity {
                     try {
                         String idONG = task.getResult().getUser().getUid();
                         ong.setId(idONG);
+                        enderecoONG.setIdONG(idONG);
+                        enderecoONG.salvarEndereco();
                         ong.salvar();
 
                         OrganizacaoFirebase.atualizarNomeOrganizacao(ong.getNome());
