@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.NovoItemONGActivity">
+    tools:context=".activity.NovoAnuncioONGActivity">
 
     <include
         layout="@layout/toolbar"
@@ -19,31 +18,31 @@
         android:padding="16dp">
 
         <EditText
-            android:id="@+id/editNome"
+            android:id="@+id/editTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_caixa_texto"
             android:ems="10"
-            android:hint="Nome do item"
+            android:hint="Título"
             android:inputType="text"
             android:padding="16dp" />
 
         <EditText
-            android:id="@+id/editTipo"
+            android:id="@+id/editDescricao"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="256dp"
             android:layout_marginTop="-2dp"
             android:background="@drawable/bg_edit_text"
             android:ems="10"
-            android:hint="Tipo de item"
-            android:inputType="text"
+            android:hint="Escreva aqui a descrição do anúncio"
+            android:inputType="textMultiLine"
             android:padding="16dp" />
 
         <Button
             android:id="@+id/buttonAcesso2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="validarDadosItem"
+            android:onClick="validarAnuncioONG"
             android:padding="16dp"
             android:text="Salvar"
             android:theme="@style/botaoPadrao" />

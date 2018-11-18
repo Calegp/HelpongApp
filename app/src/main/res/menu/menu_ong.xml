@@ -6,7 +6,24 @@
         android:id="@+id/menuNovoItem"
         android:icon="@drawable/ic_adicionar_24dp"
         android:title="Novo item"
-        app:showAsAction="always" />
+        app:showAsAction="always">
+
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <item android:id="@+id/load"
+        android:title="ffsfs"
+        app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/findfirst"
+        android:title="findfirst"
+        app:showAsAction="ifRoom|withText" />
+
+    <item android:id="@+id/findnext"
+        android:title="FindNext"
+        app:showAsAction="ifRoom|withText" />
+</menu>
+
+    </item>
 
     <item
         android:id="@+id/menuConfiguracoes"
