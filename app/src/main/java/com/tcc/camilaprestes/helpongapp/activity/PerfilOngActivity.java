@@ -84,4 +84,16 @@ public class PerfilOngActivity extends AppCompatActivity {
     private void abrirNovoPontoColeta(){
         startActivity(new Intent(PerfilOngActivity.this, NovoPontoColetaActivity.class));
     }
+
+    public void abrirMeusItens(){
+        startActivity(new Intent(PerfilOngActivity.this, ItensOngActivity.class));
+    }
+
+    public void abrirMeusAnuncios(){
+        startActivity(new Intent(PerfilOngActivity.this, AnunciosONGActivity.class));
+    }
+
+    public void abrirMeusPontosColeta(){
+        startActivity(new Intent(PerfilOngActivity.this, PontosColetaActivity.class));
+    }
 }
