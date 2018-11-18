@@ -50,8 +50,8 @@ public class AdapterItem extends RecyclerView.Adapter<AdapterItem.MyViewHolder>{
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            nome = itemView.findViewById(R.id.textNomeItem);
-            tipo = itemView.findViewById(R.id.textTipo);
+            nome = itemView.findViewById(R.id.textLocalPonto);
+            tipo = itemView.findViewById(R.id.textEnderecoPonto);
         }
     }
 }

@@ -5,22 +5,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textTipo"
+        android:id="@+id/textLocalPonto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Material"
+        android:layout_marginBottom="8dp"
+        android:text="Festa dos voluntarios"
         android:textColor="@android:color/darker_gray"
-        android:textSize="12sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textNomeItem"
-        android:layout_width="402dp"
+        android:id="@+id/textEnderecoPonto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Jornal"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="16sp"
+        android:text="Venha participar da nossa festa"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <include layout="@layout/divisor" />
