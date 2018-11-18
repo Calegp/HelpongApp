@@ -108,7 +108,7 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
     }
 
     private void inicializarComponentes(){
-           editNome = findViewById(R.id.editNome);
+           editNome = findViewById(R.id.editNomePonto);
            editDescricaoONG = findViewById(R.id.editDescricao);
            editEnderecoONG = findViewById(R.id.editEndereco);
            editResponsavelONG = findViewById(R.id.editResponsavel);

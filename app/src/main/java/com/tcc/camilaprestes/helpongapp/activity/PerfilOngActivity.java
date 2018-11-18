@@ -137,8 +137,10 @@ public class PerfilOngActivity extends AppCompatActivity {
                 break;
             case R.id.menuNovoAnuncio:
                 abrirNovoAnuncio();
+                break;
             case R.id.menuNovoPontoColeta:
                 abrirNovoPontoColeta();
+                break;
 
         }
 

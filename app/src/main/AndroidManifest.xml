@@ -59,6 +59,7 @@
         <activity
             android:name=".activity.NovoAnuncioONGActivity"
             android:parentActivityName=".activity.PerfilOngActivity" />
+
         <activity android:name=".activity.NovoPontoColetaActivity"></activity>
     </application>
 

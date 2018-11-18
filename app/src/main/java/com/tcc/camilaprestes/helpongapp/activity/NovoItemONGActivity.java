@@ -27,7 +27,7 @@ public class NovoItemONGActivity extends AppCompatActivity {
         idONGLogado = OrganizacaoFirebase.getIdONG();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Novo produto");
+        toolbar.setTitle("Novo item");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -62,7 +62,7 @@ public class NovoItemONGActivity extends AppCompatActivity {
     }
 
     private void inicializarComponentes(){
-        editNome = findViewById(R.id.editNome);
+        editNome = findViewById(R.id.editNomePonto);
         editTipo = findViewById(R.id.editTipo);
 
     }

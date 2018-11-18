@@ -42,7 +42,7 @@
             android:id="@+id/buttonAcesso2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="validarAnuncioONG"
+            android:onClick="validarDadosAnuncio"
             android:padding="16dp"
             android:text="Salvar"
             android:theme="@style/botaoPadrao" />
