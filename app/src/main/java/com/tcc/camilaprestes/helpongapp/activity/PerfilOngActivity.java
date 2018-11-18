@@ -135,6 +135,11 @@ public class PerfilOngActivity extends AppCompatActivity {
             case R.id.menuNovoItem:
                 abrirNovoItem();
                 break;
+            case R.id.menuNovoAnuncio:
+                abrirNovoAnuncio();
+            case R.id.menuNovoPontoColeta:
+                abrirNovoPontoColeta();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -156,5 +161,13 @@ public class PerfilOngActivity extends AppCompatActivity {
 
     private void abrirNovoItem(){
         startActivity(new Intent(PerfilOngActivity.this, NovoItemONGActivity.class));
+    }
+
+    private void abrirNovoAnuncio(){
+        startActivity(new Intent(PerfilOngActivity.this, NovoAnuncioONGActivity.class));
+    }
+
+    private void abrirNovoPontoColeta(){
+        startActivity(new Intent(PerfilOngActivity.this, NovoPontoColetaActivity.class));
     }
 }

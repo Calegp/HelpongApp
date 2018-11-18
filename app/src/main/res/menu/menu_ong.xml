@@ -3,24 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menuNovoItem"
+        android:id="@+id/menuNovo"
         android:icon="@drawable/ic_adicionar_24dp"
-        android:title="Novo item"
+        android:title="Adicionar"
         app:showAsAction="always">
 
     <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" >
-    <item android:id="@+id/load"
-        android:title="ffsfs"
-        app:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menuNovoItem"
+        android:title="Adicionar item"
+        app:showAsAction="always" />
 
-    <item android:id="@+id/findfirst"
-        android:title="findfirst"
-        app:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menuNovoAnuncio"
+        android:title="Adicionar anúncio"
+        app:showAsAction="always" />
 
-    <item android:id="@+id/findnext"
-        android:title="FindNext"
-        app:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menuNovoPontoColeta"
+        android:title="Adicionar ponto de coleta"
+        app:showAsAction="always" />
 </menu>
 
     </item>
