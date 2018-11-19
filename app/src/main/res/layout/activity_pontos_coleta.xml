@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.PerfilOngActivity">
+    tools:context=".activity.PontosColetaActivity">
 
     <include
         android:id="@+id/include"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerItens"
+        android:id="@+id/recyclerPontosColeta"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"

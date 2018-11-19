@@ -72,7 +72,7 @@
             android:parentActivityName=".activity.PerfilOngActivity" />
 
         <activity android:name=".activity.ItensOngActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
+            android:parentActivityName=".activity.PerfilOngActivity"/>
     </application>
 
 </manifest>

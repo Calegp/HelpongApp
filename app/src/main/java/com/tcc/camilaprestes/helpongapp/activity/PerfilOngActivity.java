@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.tcc.camilaprestes.helpongapp.R;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
@@ -14,6 +17,7 @@ import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 public class PerfilOngActivity extends AppCompatActivity {
 
     private FirebaseAuth autenticacao;
+    private Button botaoItens, botaoAnuncios, botaoPontosColeta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +28,31 @@ public class PerfilOngActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Perfil - ONG");
         setSupportActionBar(toolbar);
+
+        botaoItens = findViewById(R.id.buttonMeusItens);
+        botaoItens.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ItensOngActivity.class));
+            }
+        });
+
+        botaoAnuncios = findViewById(R.id.buttonMeusAnuncios);
+        botaoAnuncios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AnunciosONGActivity.class));
+            }
+
+        });
+
+        botaoPontosColeta = findViewById(R.id.buttonMeusPontosColeta);
+        botaoPontosColeta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), PontosColetaActivity.class));
+            }
+        });
 
     }
 
@@ -85,15 +114,4 @@ public class PerfilOngActivity extends AppCompatActivity {
         startActivity(new Intent(PerfilOngActivity.this, NovoPontoColetaActivity.class));
     }
 
-    public void abrirMeusItens(){
-        startActivity(new Intent(PerfilOngActivity.this, ItensOngActivity.class));
-    }
-
-    public void abrirMeusAnuncios(){
-        startActivity(new Intent(PerfilOngActivity.this, AnunciosONGActivity.class));
-    }
-
-    public void abrirMeusPontosColeta(){
-        startActivity(new Intent(PerfilOngActivity.this, PontosColetaActivity.class));
-    }
 }

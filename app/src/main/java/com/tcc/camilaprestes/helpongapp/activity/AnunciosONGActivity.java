@@ -25,7 +25,7 @@ import java.util.List;
 
 public class AnunciosONGActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerItens;
+    private RecyclerView recyclerAnuncios;
     private AdapterAnuncio adapterAnuncio;
     private List<Anuncio> anuncios = new ArrayList<>();
     private DatabaseReference firebaseRef;
@@ -46,17 +46,17 @@ public class AnunciosONGActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerItens.setLayoutManager(new LinearLayoutManager(this));
-        recyclerItens.setHasFixedSize(true);
+        recyclerAnuncios.setLayoutManager(new LinearLayoutManager(this));
+        recyclerAnuncios.setHasFixedSize(true);
         adapterAnuncio = new AdapterAnuncio(anuncios,this);
-        recyclerItens.setAdapter(adapterAnuncio);
+        recyclerAnuncios.setAdapter(adapterAnuncio);
 
         recuperarAnuncios();
 
-        recyclerItens.addOnItemTouchListener(
+        recyclerAnuncios.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         this,
-                        recyclerItens,
+                        recyclerAnuncios,
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
@@ -106,6 +106,6 @@ public class AnunciosONGActivity extends AppCompatActivity {
     }
 
     private void inicializarComponentes(){
-        recyclerItens = findViewById(R.id.recyclerItens);
+        recyclerAnuncios = findViewById(R.id.recyclerAnuncios);
     }
 }

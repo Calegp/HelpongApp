@@ -16,14 +16,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonMeusItens"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/background_degrade"
-        android:onClick="abrirMeusItens"
         android:text="Meus itens necessários"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,33 +30,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonMeusAnuncios"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/background_degrade"
-        android:onClick="abrirMeusAnuncios"
         android:text="Meus anúncios"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonMeusItens" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonMeusPontosColeta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/background_degrade"
-        android:onClick="abrirMeusPontosColeta"
         android:text="Meus pontos de coleta"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonMeusAnuncios" />
 
 </android.support.constraint.ConstraintLayout>

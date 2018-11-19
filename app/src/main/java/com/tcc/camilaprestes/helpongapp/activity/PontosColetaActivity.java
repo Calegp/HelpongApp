@@ -27,7 +27,7 @@ import java.util.List;
 
 public class PontosColetaActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerItens;
+    private RecyclerView recyclerPontosColeta;
     private AdapterPontoColeta adapterPontoColeta;
     private List<PontoColeta> pontosColeta = new ArrayList<>();
     private DatabaseReference firebaseRef;
@@ -48,17 +48,17 @@ public class PontosColetaActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerItens.setLayoutManager(new LinearLayoutManager(this));
-        recyclerItens.setHasFixedSize(true);
+        recyclerPontosColeta.setLayoutManager(new LinearLayoutManager(this));
+        recyclerPontosColeta.setHasFixedSize(true);
         adapterPontoColeta = new AdapterPontoColeta(pontosColeta,this);
-        recyclerItens.setAdapter(adapterPontoColeta);
+        recyclerPontosColeta.setAdapter(adapterPontoColeta);
 
         recuperarPontosColeta();
 
-        recyclerItens.addOnItemTouchListener(
+        recyclerPontosColeta.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         this,
-                        recyclerItens,
+                        recyclerPontosColeta,
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
@@ -85,11 +85,11 @@ public class PontosColetaActivity extends AppCompatActivity {
     }
 
     private void recuperarPontosColeta(){
-        DatabaseReference anunciosRef = firebaseRef
-                .child("pontosColeta")
+        DatabaseReference pontosColetaRef = firebaseRef
+                .child("pontoscoleta")
                 .child(idONGLogado);
 
-        anunciosRef.addValueEventListener(new ValueEventListener() {
+        pontosColetaRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 pontosColeta.clear();
@@ -108,6 +108,6 @@ public class PontosColetaActivity extends AppCompatActivity {
     }
 
     private void inicializarComponentes(){
-        recyclerItens = findViewById(R.id.recyclerItens);
+        recyclerPontosColeta = findViewById(R.id.recyclerPontosColeta);
     }
 }

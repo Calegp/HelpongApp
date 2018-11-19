@@ -50,8 +50,8 @@ public class AdapterPontoColeta extends RecyclerView.Adapter<AdapterPontoColeta.
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            nomePonto = itemView.findViewById(R.id.textNomeItem);
-            enderecoPonto = itemView.findViewById(R.id.textTipo);
+            nomePonto = itemView.findViewById(R.id.textLocalPonto);
+            enderecoPonto = itemView.findViewById(R.id.textEnderecoPonto);
         }
     }
 }

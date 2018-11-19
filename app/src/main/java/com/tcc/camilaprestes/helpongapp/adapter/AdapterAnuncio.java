@@ -50,8 +50,8 @@ public class AdapterAnuncio extends RecyclerView.Adapter<AdapterAnuncio.MyViewHo
         public MyViewHolder(View anuncioView) {
             super(anuncioView);
 
-            titulo = anuncioView.findViewById(R.id.textNomeItem);
-            descricao = anuncioView.findViewById(R.id.textTipo);
+            titulo = anuncioView.findViewById(R.id.textTitulo);
+            descricao = anuncioView.findViewById(R.id.textDescricao);
         }
     }
 }
