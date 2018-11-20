@@ -101,7 +101,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng localUsuario = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions()
                         .position(localUsuario)
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.mylocation))
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.ponto_user))
                         .title("Meu local"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(localUsuario,15));
 
@@ -134,7 +134,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
-                    100000,
+                    100000000,
                     0,
                     locationListener
             );
@@ -224,7 +224,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     locationManager.requestLocationUpdates(
                             LocationManager.GPS_PROVIDER,
-                            10000,
+                            100000000,
                             0,
                             locationListener
                     );
@@ -255,15 +255,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void recuperarEnderecos(){
         DatabaseReference enderRef = firebaseRef
-                .child("enderecos")
-                .child(idONGLogado);
+                .child("enderecos");
 
         enderRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 enderecosONG.clear();
-                for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    enderecosONG.add(ds.getValue(EnderecoONG.class));
+                for(DataSnapshot ender: dataSnapshot.getChildren()){
+                    for(DataSnapshot enderOng: ender.getChildren()) {
+                        enderecosONG.add(enderOng.getValue(EnderecoONG.class));
+                    }
                 }
 
                 for (EnderecoONG end: enderecosONG) {
