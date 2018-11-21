@@ -71,10 +71,18 @@
         <activity
             android:name=".activity.ItensOngActivity"
             android:parentActivityName=".activity.PerfilOngActivity" />
+        <activity
+            android:name=".activity.PerfilOngUsuarioActivity"
+            android:parentActivityName=".activity.MapsActivity" />
 
-        <activity android:name=".activity.PerfilOngUsuarioActivity"
-            android:parentActivityName=".activity.MapsActivity" >
-        </activity>
+        <activity android:name=".activity.ItemOngUsuarioActivity"
+            android:parentActivityName=".activity.PerfilOngUsuarioActivity"/>
+
+        <activity android:name=".activity.AnuncioOngUsuarioActivity"
+            android:parentActivityName=".activity.PerfilOngUsuarioActivity"/>
+
+        <activity android:name=".activity.PontoColetaOngUsuarioActivity"
+            android:parentActivityName=".activity.PerfilOngUsuarioActivity"/>
     </application>
 
 </manifest>
