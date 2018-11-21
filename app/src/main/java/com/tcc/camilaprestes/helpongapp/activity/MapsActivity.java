@@ -3,6 +3,7 @@ package com.tcc.camilaprestes.helpongapp.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,7 +55,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     private LocationListener locationListener;
     private DatabaseReference firebaseRef;
-    private String idONGLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         editLocal = findViewById(R.id.editLocal);
         firebaseRef = ConfiguracaoFirebase.getFirebase();
-        idONGLogado = OrganizacaoFirebase.getIdONG();
 
         //Validar permissões
         Permissoes.validarPermissoes(permissoes, this, 1);
@@ -124,6 +124,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
 
         recuperarEnderecos();
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                String idONG = marker.getSnippet();
+                Intent intent = new Intent(MapsActivity.this, PerfilOngUsuarioActivity.class);
+
+                Bundle bundle = new Bundle();
+
+                bundle.putString("idONG", idONG);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                return false;
+            }
+        });
 
         /*
          * 1) Provedor da localização
@@ -274,6 +289,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     LatLng localONG = new LatLng(latitude,longitude);
                     mMap.addMarker(new MarkerOptions()
                             .position(localONG)
+                            .snippet(end.getIdONG())
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
                             .title(end.getRua()));
                 }

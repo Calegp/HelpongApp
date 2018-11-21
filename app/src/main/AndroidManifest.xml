@@ -49,9 +49,7 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.CadastroActivity" />
-
         <activity android:name=".activity.PerfilOngActivity" />
-
         <activity
             android:name=".activity.ConfiguracoesONGActivity"
             android:parentActivityName=".activity.PerfilOngActivity" />
@@ -61,18 +59,22 @@
         <activity
             android:name=".activity.NovoAnuncioONGActivity"
             android:parentActivityName=".activity.PerfilOngActivity" />
-
-        <activity android:name=".activity.NovoPontoColetaActivity"
+        <activity
+            android:name=".activity.NovoPontoColetaActivity"
+            android:parentActivityName=".activity.PerfilOngActivity" />
+        <activity
+            android:name=".activity.AnunciosONGActivity"
+            android:parentActivityName=".activity.PerfilOngActivity" />
+        <activity
+            android:name=".activity.PontosColetaActivity"
+            android:parentActivityName=".activity.PerfilOngActivity" />
+        <activity
+            android:name=".activity.ItensOngActivity"
             android:parentActivityName=".activity.PerfilOngActivity" />
 
-        <activity android:name=".activity.AnunciosONGActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
-
-        <activity android:name=".activity.PontosColetaActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
-
-        <activity android:name=".activity.ItensOngActivity"
-            android:parentActivityName=".activity.PerfilOngActivity"/>
+        <activity android:name=".activity.PerfilOngUsuarioActivity"
+            android:parentActivityName=".activity.MapsActivity" >
+        </activity>
     </application>
 
 </manifest>
