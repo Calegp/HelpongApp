@@ -14,12 +14,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.camilaprestes.helpongapp.R;
-import com.tcc.camilaprestes.helpongapp.adapter.AdapterAnuncio;
 import com.tcc.camilaprestes.helpongapp.adapter.AdapterPontoColeta;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
 import com.tcc.camilaprestes.helpongapp.listener.RecyclerItemClickListener;
-import com.tcc.camilaprestes.helpongapp.model.Anuncio;
 import com.tcc.camilaprestes.helpongapp.model.PontoColeta;
 
 import java.util.ArrayList;

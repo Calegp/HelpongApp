@@ -34,7 +34,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.camilaprestes.helpongapp.R;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
-import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.Permissoes;
 import com.tcc.camilaprestes.helpongapp.model.EnderecoONG;
 import com.tcc.camilaprestes.helpongapp.model.EnderecoUsuario;
@@ -64,10 +63,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         editLocal = findViewById(R.id.editLocal);
         firebaseRef = ConfiguracaoFirebase.getFirebase();
 
-        //Validar permissões
         Permissoes.validarPermissoes(permissoes, this, 1);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -87,7 +84,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //Objeto responsável por gerenciar a localização do usuário
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
         locationListener = new LocationListener() {
@@ -140,12 +136,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        /*
-         * 1) Provedor da localização
-         * 2) Tempo mínimo entre atualizacões de localização (milesegundos)
-         * 3) Distancia mínima entre atualizacões de localização (metros)
-         * 4) Location listener (para recebermos as atualizações)
-         * */
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
@@ -234,7 +224,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (permissaoResultado == PackageManager.PERMISSION_DENIED) {
                 alertaValidacaoPermissao();
             } else if (permissaoResultado == PackageManager.PERMISSION_GRANTED) {
-                //Recuperar localizacao do usuario
 
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     locationManager.requestLocationUpdates(

@@ -5,20 +5,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.camilaprestes.helpongapp.R;
-import com.tcc.camilaprestes.helpongapp.adapter.AdapterPontoColeta;
 import com.tcc.camilaprestes.helpongapp.adapter.AdapterPontoColetaUser;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
-import com.tcc.camilaprestes.helpongapp.listener.RecyclerItemClickListener;
 import com.tcc.camilaprestes.helpongapp.model.PontoColeta;
 
 import java.util.ArrayList;

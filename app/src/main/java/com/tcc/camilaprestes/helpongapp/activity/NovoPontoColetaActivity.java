@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import com.tcc.camilaprestes.helpongapp.R;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
-import com.tcc.camilaprestes.helpongapp.model.Item;
 import com.tcc.camilaprestes.helpongapp.model.PontoColeta;
 
 public class NovoPontoColetaActivity extends AppCompatActivity{

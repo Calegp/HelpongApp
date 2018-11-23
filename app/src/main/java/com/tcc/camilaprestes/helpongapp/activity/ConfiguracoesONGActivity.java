@@ -68,7 +68,6 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
 
     public void validarDadosONG(View view){
 
-        //Valida se os campos foram preenchidos
         String nome = editNome.getText().toString();
         String endereco = editEnderecoONG.getText().toString();
         String responsavel = editResponsavelONG.getText().toString();
