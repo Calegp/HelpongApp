@@ -72,20 +72,20 @@
             android:name=".activity.ong_activities.ItensOngActivity"
             android:parentActivityName=".activity.PerfilOngActivity" />
         <activity
-            android:name=".activity.PerfilOngUsuarioActivity"
+            android:name=".activity.user_activities.PerfilOngUsuarioActivity"
             android:parentActivityName=".activity.MapsActivity" />
 
         <activity
             android:name=".activity.user_activities.ItemOngUsuarioActivity"
-            android:parentActivityName=".activity.PerfilOngUsuarioActivity"/>
+            android:parentActivityName=".activity.user_activities.PerfilOngUsuarioActivity" />
 
         <activity
             android:name=".activity.user_activities.AnuncioOngUsuarioActivity"
-            android:parentActivityName=".activity.PerfilOngUsuarioActivity"/>
+            android:parentActivityName=".activity.user_activities.PerfilOngUsuarioActivity" />
 
         <activity
             android:name=".activity.user_activities.PontoColetaOngUsuarioActivity"
-            android:parentActivityName=".activity.PerfilOngUsuarioActivity"/>
+            android:parentActivityName=".activity.user_activities.PerfilOngUsuarioActivity" />
     </application>
 
 </manifest>
