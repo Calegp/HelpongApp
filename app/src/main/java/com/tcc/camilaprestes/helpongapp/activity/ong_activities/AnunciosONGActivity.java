@@ -1,4 +1,4 @@
-package com.tcc.camilaprestes.helpongapp.activity;
+package com.tcc.camilaprestes.helpongapp.activity.ong_activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,27 +14,27 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.camilaprestes.helpongapp.R;
-import com.tcc.camilaprestes.helpongapp.adapter.AdapterItem;
+import com.tcc.camilaprestes.helpongapp.adapter.ong.AdapterAnuncio;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
 import com.tcc.camilaprestes.helpongapp.listener.RecyclerItemClickListener;
-import com.tcc.camilaprestes.helpongapp.model.Item;
+import com.tcc.camilaprestes.helpongapp.model.Anuncio;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItensOngActivity extends AppCompatActivity {
+public class AnunciosONGActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerItens;
-    private AdapterItem adapterItem;
-    private List<Item> itens = new ArrayList<>();
+    private RecyclerView recyclerAnuncios;
+    private AdapterAnuncio adapterAnuncio;
+    private List<Anuncio> anuncios = new ArrayList<>();
     private DatabaseReference firebaseRef;
     private String idONGLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_itens_ong);
+        setContentView(R.layout.activity_anuncios_ong);
 
         firebaseRef = ConfiguracaoFirebase.getFirebase();
         idONGLogado = OrganizacaoFirebase.getIdONG();
@@ -42,21 +42,21 @@ public class ItensOngActivity extends AppCompatActivity {
         inicializarComponentes();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Meus itens necessarios");
+        toolbar.setTitle("Meus anúncios");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerItens.setLayoutManager(new LinearLayoutManager(this));
-        recyclerItens.setHasFixedSize(true);
-        adapterItem = new AdapterItem(itens,this);
-        recyclerItens.setAdapter(adapterItem);
+        recyclerAnuncios.setLayoutManager(new LinearLayoutManager(this));
+        recyclerAnuncios.setHasFixedSize(true);
+        adapterAnuncio = new AdapterAnuncio(anuncios,this);
+        recyclerAnuncios.setAdapter(adapterAnuncio);
 
-        recuperarItens();
+        recuperarAnuncios();
 
-        recyclerItens.addOnItemTouchListener(
+        recyclerAnuncios.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         this,
-                        recyclerItens,
+                        recyclerAnuncios,
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
@@ -65,10 +65,10 @@ public class ItensOngActivity extends AppCompatActivity {
 
                             @Override
                             public void onLongItemClick(View view, int position) {
-                                Item itemSelecionado = itens.get(position);
-                                itemSelecionado.remover();
-                                Toast.makeText(ItensOngActivity.this,
-                                        "Item excluido com sucesso!",
+                                Anuncio anuncioSelecionado = anuncios.get(position);
+                                anuncioSelecionado.removerAnuncio();
+                                Toast.makeText(AnunciosONGActivity.this,
+                                        "Anúncio excluido com sucesso!",
                                         Toast.LENGTH_SHORT)
                                         .show();
                             }
@@ -82,20 +82,20 @@ public class ItensOngActivity extends AppCompatActivity {
         );
     }
 
-    private void recuperarItens(){
-        DatabaseReference itensRef = firebaseRef
-                .child("itens")
+    private void recuperarAnuncios(){
+        DatabaseReference anunciosRef = firebaseRef
+                .child("anuncios")
                 .child(idONGLogado);
 
-        itensRef.addValueEventListener(new ValueEventListener() {
+        anunciosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                itens.clear();
+                anuncios.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    itens.add(ds.getValue(Item.class));
+                    anuncios.add(ds.getValue(Anuncio.class));
                 }
 
-                adapterItem.notifyDataSetChanged();
+                adapterAnuncio.notifyDataSetChanged();
             }
 
             @Override
@@ -106,6 +106,6 @@ public class ItensOngActivity extends AppCompatActivity {
     }
 
     private void inicializarComponentes(){
-        recyclerItens = findViewById(R.id.recyclerItens);
+        recyclerAnuncios = findViewById(R.id.recyclerAnuncios);
     }
 }

@@ -1,4 +1,4 @@
-package com.tcc.camilaprestes.helpongapp.activity;
+package com.tcc.camilaprestes.helpongapp.activity.ong_activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tcc.camilaprestes.helpongapp.R;
+import com.tcc.camilaprestes.helpongapp.activity.PerfilOngActivity;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 
 public class LoginActivity extends AppCompatActivity {

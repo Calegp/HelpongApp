@@ -1,4 +1,4 @@
-package com.tcc.camilaprestes.helpongapp.activity;
+package com.tcc.camilaprestes.helpongapp.activity.ong_activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.camilaprestes.helpongapp.R;
-import com.tcc.camilaprestes.helpongapp.adapter.AdapterPontoColeta;
+import com.tcc.camilaprestes.helpongapp.adapter.ong.AdapterPontoColeta;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
 import com.tcc.camilaprestes.helpongapp.listener.RecyclerItemClickListener;

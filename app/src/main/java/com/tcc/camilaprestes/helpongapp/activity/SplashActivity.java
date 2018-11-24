@@ -23,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void abrirAutenticacao(){
-        Intent i = new Intent(SplashActivity.this, AutenticacaoActivity.class);
+        Intent i = new Intent(SplashActivity.this, HomeActivity.class);
         startActivity(i);
         finish();
     }

@@ -8,8 +8,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.tcc.camilaprestes.helpongapp.R;
+import com.tcc.camilaprestes.helpongapp.activity.ong_activities.CadastroActivity;
+import com.tcc.camilaprestes.helpongapp.activity.ong_activities.LoginActivity;
 
-public class AutenticacaoActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     private Button botaoAcesso;
     private TextView btnLogin, btnCadastro;

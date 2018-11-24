@@ -1,4 +1,4 @@
-package com.tcc.camilaprestes.helpongapp.adapter;
+package com.tcc.camilaprestes.helpongapp.adapter.ong;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

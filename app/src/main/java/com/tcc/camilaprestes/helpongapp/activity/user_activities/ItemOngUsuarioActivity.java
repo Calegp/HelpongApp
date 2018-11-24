@@ -1,6 +1,5 @@
-package com.tcc.camilaprestes.helpongapp.activity;
+package com.tcc.camilaprestes.helpongapp.activity.user_activities;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,63 +11,59 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.camilaprestes.helpongapp.R;
-import com.tcc.camilaprestes.helpongapp.adapter.AdapterAnuncioUser;
+import com.tcc.camilaprestes.helpongapp.adapter.user.AdapterItemUser;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
-import com.tcc.camilaprestes.helpongapp.model.Anuncio;
+import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
+import com.tcc.camilaprestes.helpongapp.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnuncioOngUsuarioActivity extends AppCompatActivity {
+public class ItemOngUsuarioActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerAnunciosUser;
-    private AdapterAnuncioUser adapterAnuncioUser;
-    private List<Anuncio> anuncios = new ArrayList<>();
+    private RecyclerView recyclerItensUser;
+    private AdapterItemUser adapterItemUser;
+    private List<Item> itens = new ArrayList<>();
     private DatabaseReference firebaseRef;
     private String idONG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_anuncio_ong_usuario);
+        setContentView(R.layout.activity_item_ong_usuario);
 
         firebaseRef = ConfiguracaoFirebase.getFirebase();
-
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-
-        idONG = bundle.getString("idONG");
+        idONG = OrganizacaoFirebase.getIdONG();
 
         inicializarComponentes();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Anúncios");
+        toolbar.setTitle("Itens necessarios");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerAnunciosUser.setLayoutManager(new LinearLayoutManager(this));
-        recyclerAnunciosUser.setHasFixedSize(true);
-        adapterAnuncioUser = new AdapterAnuncioUser(anuncios,this);
-        recyclerAnunciosUser.setAdapter(adapterAnuncioUser);
+        recyclerItensUser.setLayoutManager(new LinearLayoutManager(this));
+        recyclerItensUser.setHasFixedSize(true);
+        adapterItemUser = new AdapterItemUser(itens,this);
+        recyclerItensUser.setAdapter(adapterItemUser);
 
-        recuperarAnuncios();
-
+        recuperarItens();
     }
 
-    private void recuperarAnuncios(){
-        DatabaseReference anunciosRef = firebaseRef
-                .child("anuncios")
+    private void recuperarItens(){
+        DatabaseReference itensRef = firebaseRef
+                .child("itens")
                 .child(idONG);
 
-        anunciosRef.addValueEventListener(new ValueEventListener() {
+        itensRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                anuncios.clear();
+                itens.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    anuncios.add(ds.getValue(Anuncio.class));
+                    itens.add(ds.getValue(Item.class));
                 }
 
-                adapterAnuncioUser.notifyDataSetChanged();
+                adapterItemUser.notifyDataSetChanged();
             }
 
             @Override
@@ -79,7 +74,6 @@ public class AnuncioOngUsuarioActivity extends AppCompatActivity {
     }
 
     private void inicializarComponentes(){
-        recyclerAnunciosUser = findViewById(R.id.recyclerAnunciosUser);
+        recyclerItensUser = findViewById(R.id.recyclerItensUser);
     }
-
 }

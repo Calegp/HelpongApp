@@ -1,4 +1,4 @@
-package com.tcc.camilaprestes.helpongapp.activity;
+package com.tcc.camilaprestes.helpongapp.activity.user_activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,26 +11,26 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.tcc.camilaprestes.helpongapp.R;
-import com.tcc.camilaprestes.helpongapp.adapter.AdapterItemUser;
+import com.tcc.camilaprestes.helpongapp.adapter.user.AdapterPontoColetaUser;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
-import com.tcc.camilaprestes.helpongapp.model.Item;
+import com.tcc.camilaprestes.helpongapp.model.PontoColeta;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemOngUsuarioActivity extends AppCompatActivity {
+public class PontoColetaOngUsuarioActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerItensUser;
-    private AdapterItemUser adapterItemUser;
-    private List<Item> itens = new ArrayList<>();
+    private RecyclerView recyclerPontosColetaUser;
+    private AdapterPontoColetaUser adapterPontoColetaUser;
+    private List<PontoColeta> pontosColeta = new ArrayList<>();
     private DatabaseReference firebaseRef;
     private String idONG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_ong_usuario);
+        setContentView(R.layout.activity_ponto_coleta_ong_usuario);
 
         firebaseRef = ConfiguracaoFirebase.getFirebase();
         idONG = OrganizacaoFirebase.getIdONG();
@@ -38,32 +38,33 @@ public class ItemOngUsuarioActivity extends AppCompatActivity {
         inicializarComponentes();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Itens necessarios");
+        toolbar.setTitle("Pontos de coleta");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerItensUser.setLayoutManager(new LinearLayoutManager(this));
-        recyclerItensUser.setHasFixedSize(true);
-        adapterItemUser = new AdapterItemUser(itens,this);
-        recyclerItensUser.setAdapter(adapterItemUser);
+        recyclerPontosColetaUser.setLayoutManager(new LinearLayoutManager(this));
+        recyclerPontosColetaUser.setHasFixedSize(true);
+        adapterPontoColetaUser = new AdapterPontoColetaUser(pontosColeta,this);
+        recyclerPontosColetaUser.setAdapter(adapterPontoColetaUser);
 
-        recuperarItens();
+        recuperarPontosColeta();
+
     }
 
-    private void recuperarItens(){
-        DatabaseReference itensRef = firebaseRef
-                .child("itens")
+    private void recuperarPontosColeta(){
+        DatabaseReference pontosColetaRef = firebaseRef
+                .child("pontoscoleta")
                 .child(idONG);
 
-        itensRef.addValueEventListener(new ValueEventListener() {
+        pontosColetaRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                itens.clear();
+                pontosColeta.clear();
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    itens.add(ds.getValue(Item.class));
+                    pontosColeta.add(ds.getValue(PontoColeta.class));
                 }
 
-                adapterItemUser.notifyDataSetChanged();
+                adapterPontoColetaUser.notifyDataSetChanged();
             }
 
             @Override
@@ -74,6 +75,6 @@ public class ItemOngUsuarioActivity extends AppCompatActivity {
     }
 
     private void inicializarComponentes(){
-        recyclerItensUser = findViewById(R.id.recyclerItensUser);
+        recyclerPontosColetaUser = findViewById(R.id.recyclerPontosColetaUser);
     }
 }

@@ -12,6 +12,13 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.tcc.camilaprestes.helpongapp.R;
+import com.tcc.camilaprestes.helpongapp.activity.ong_activities.AnunciosONGActivity;
+import com.tcc.camilaprestes.helpongapp.activity.ong_activities.ConfiguracoesONGActivity;
+import com.tcc.camilaprestes.helpongapp.activity.ong_activities.ItensOngActivity;
+import com.tcc.camilaprestes.helpongapp.activity.ong_activities.NovoAnuncioONGActivity;
+import com.tcc.camilaprestes.helpongapp.activity.ong_activities.NovoItemONGActivity;
+import com.tcc.camilaprestes.helpongapp.activity.ong_activities.NovoPontoColetaActivity;
+import com.tcc.camilaprestes.helpongapp.activity.ong_activities.PontosColetaActivity;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 
 public class PerfilOngActivity extends AppCompatActivity {
