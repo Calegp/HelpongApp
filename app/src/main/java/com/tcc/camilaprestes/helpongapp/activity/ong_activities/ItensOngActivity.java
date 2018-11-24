@@ -1,5 +1,7 @@
 package com.tcc.camilaprestes.helpongapp.activity.ong_activities;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -65,12 +67,29 @@ public class ItensOngActivity extends AppCompatActivity {
 
                             @Override
                             public void onLongItemClick(View view, int position) {
-                                Item itemSelecionado = itens.get(position);
-                                itemSelecionado.remover();
-                                Toast.makeText(ItensOngActivity.this,
-                                        "Item excluido com sucesso!",
-                                        Toast.LENGTH_SHORT)
-                                        .show();
+                                final Item itemSelecionado = itens.get(position);
+
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(ItensOngActivity.this);
+
+                                dialog.setTitle("Confirmar exclusão");
+                                dialog.setMessage("Deseja excluir esse item?");
+
+                                dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        itemSelecionado.remover();
+                                        Toast.makeText(ItensOngActivity.this,
+                                                "Item excluido com sucesso!",
+                                                Toast.LENGTH_SHORT)
+                                                .show();
+                                    }
+                                });
+
+                                dialog.setNegativeButton("Não", null);
+
+                                dialog.create();
+                                dialog.show();
+
                             }
 
                             @Override

@@ -1,5 +1,7 @@
 package com.tcc.camilaprestes.helpongapp.activity.ong_activities;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -65,12 +67,29 @@ public class PontosColetaActivity extends AppCompatActivity {
 
                             @Override
                             public void onLongItemClick(View view, int position) {
-                                PontoColeta pontoSelecionado = pontosColeta.get(position);
-                                pontoSelecionado.removerPontoColeta();
-                                Toast.makeText(PontosColetaActivity.this,
-                                        "Ponto de coleta excluido com sucesso!",
-                                        Toast.LENGTH_SHORT)
-                                        .show();
+                                final PontoColeta pontoSelecionado = pontosColeta.get(position);
+
+                                AlertDialog.Builder dialog = new AlertDialog.Builder(PontosColetaActivity.this);
+
+                                dialog.setTitle("Confirmar exclusão");
+                                dialog.setMessage("Deseja excluir esse ponto de coleta?");
+
+                                dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        pontoSelecionado.removerPontoColeta();
+                                        Toast.makeText(PontosColetaActivity.this,
+                                                "Ponto de coleta excluido com sucesso!",
+                                                Toast.LENGTH_SHORT)
+                                                .show();
+                                    }
+                                });
+
+                                dialog.setNegativeButton("Não", null);
+
+                                dialog.create();
+                                dialog.show();
+
                             }
 
                             @Override

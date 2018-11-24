@@ -98,6 +98,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng localUsuario = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions()
                         .position(localUsuario)
+                        .snippet("")
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.ponto_user))
                         .title("Meu local"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(localUsuario,15));
@@ -126,13 +127,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onMarkerClick(Marker marker) {
                 String idONG = marker.getSnippet();
-                Intent intent = new Intent(MapsActivity.this, PerfilOngUsuarioActivity.class);
 
-                Bundle bundle = new Bundle();
+                if(!idONG.equals("")) {
+                    Intent intent = new Intent(MapsActivity.this, PerfilOngUsuarioActivity.class);
 
-                bundle.putString("idONG", idONG);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("idONG", idONG);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
                 return false;
             }
         });
@@ -177,7 +181,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 LatLng novoLocal = new LatLng(addressLocal.getLatitude(), addressLocal.getLongitude());
-                                mMap.addMarker(new MarkerOptions().position(novoLocal).title(enderecoUsuario.getRua()));
+                                mMap.addMarker(new MarkerOptions().position(novoLocal).snippet("").title(enderecoUsuario.getRua()));
                                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(novoLocal,15));
 
                             }
