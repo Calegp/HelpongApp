@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">HelpongApp</string>
     <string name="title_activity_maps">Map</string>
+    <string name="minhaongdocoracao_ong_com">minhaongdocoracao@ong.com</string>
+    <string name="pontos_de_coleta">Pontos de coleta:</string>
+    <string name="rua_dos_confins_do_araribo_142_porto_alegre">Rua dos confins do araribo, 142 - Porto Alegre</string>
+    <string name="endereco">Endereço:</string>
+    <string name="email">Email:</string>
+    <string name="itens_que_precisamos">Itens que precisamos:</string>
+    <string name="anuncios">Anúncios:</string>
+    <string name="descricao">Descrição da ong com muitas linhas e linhas. Descrição da ong com muitas linhas e linhas. Descrição da ong com muitas linhas e linhas. Descrição da ong com muitas linhas e linhas.</string>
 </resources>
