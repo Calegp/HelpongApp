@@ -118,7 +118,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/recyclerItensUser" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerPontosColetaUser"
+                android:id="@+id/recyclerAnunciosUser"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginStart="16dp"
@@ -147,7 +147,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/recyclerAnunciosUser" />
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerAnunciosUser"
+                android:id="@+id/recyclerPontosColetaUser"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginStart="16dp"
