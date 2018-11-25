@@ -16,7 +16,7 @@ public class Organizacao {
     public Organizacao() {
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
         DatabaseReference ongRef = firebaseRef
-                .child("ong");
+                .child("ongs");
         setId(ongRef.push().getKey() );
     }
 
@@ -29,10 +29,8 @@ public class Organizacao {
 
     public void excluir(){
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
-        DatabaseReference ong = firebaseRef
-                .child("ong")
-                .child( getId() );
-        ong.removeValue();
+        DatabaseReference ongs = firebaseRef.child("ongs").child(getId());
+        ongs.removeValue();
     }
 
     public String getId() {
