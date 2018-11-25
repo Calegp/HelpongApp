@@ -8,6 +8,7 @@ public class EnderecoONG {
     private String idEndereco;
     private String rua;
     private String numero;
+    private String estado;
     private String cidade;
     private String bairro;
     private String cep;
@@ -60,6 +61,14 @@ public class EnderecoONG {
 
     public String getNumero() {
         return numero;
+    }
+
+    public String getEstado() {
+        return cidade;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public void setNumero(String numero) {

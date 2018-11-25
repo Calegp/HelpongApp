@@ -3,6 +3,7 @@ package com.tcc.camilaprestes.helpongapp.model;
 public class EnderecoUsuario {
     private String rua;
     private String numero;
+    private String estado;
     private String cidade;
     private String bairro;
     private String cep;
@@ -28,6 +29,14 @@ public class EnderecoUsuario {
 
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+
+    public String getEstado() {
+        return cidade;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getCidade() {

@@ -66,7 +66,8 @@ public class CadastroActivity extends AppCompatActivity {
 
                             if(addressEndereco != null){
                                 EnderecoONG enderecoONG = new EnderecoONG();
-                                enderecoONG.setCidade(addressEndereco.getAdminArea());
+                                enderecoONG.setEstado(addressEndereco.getAdminArea());
+                                enderecoONG.setCidade(addressEndereco.getLocality());
                                 enderecoONG.setCep(addressEndereco.getPostalCode());
                                 enderecoONG.setBairro(addressEndereco.getSubLocality());
                                 enderecoONG.setRua(addressEndereco.getThoroughfare());
