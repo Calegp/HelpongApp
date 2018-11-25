@@ -63,16 +63,16 @@ public class EnderecoONG {
         return numero;
     }
 
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
     public String getEstado() {
-        return cidade;
+        return estado;
     }
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
     }
 
     public String getCidade() {

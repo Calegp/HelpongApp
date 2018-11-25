@@ -134,33 +134,6 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
 
     }
 
-    public void desativarAtivarOng(View view) {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(ConfiguracoesONGActivity.this);
-
-        dialog.setTitle("Confirmar desativação/ativação");
-        dialog.setMessage("Deseja desativar/ativar a conta?");
-
-        dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Organizacao ong = new Organizacao();
-                ong.setId(idONGLogado);
-                if (ong.isDesAtivado()) {
-                    ong.setDesativado(false);
-                } else {
-                    ong.setDesativado(true);
-                }
-                ong.salvar();
-                finish();
-            }
-        });
-
-        dialog.setNegativeButton("Não", null);
-
-        dialog.create();
-        dialog.show();
-    }
-
     private void exibirMensagem(String texto){
         Toast.makeText(this, texto, Toast.LENGTH_SHORT)
                 .show();
