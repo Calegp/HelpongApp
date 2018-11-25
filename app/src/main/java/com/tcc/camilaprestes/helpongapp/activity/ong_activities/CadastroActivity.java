@@ -81,6 +81,7 @@ public class CadastroActivity extends AppCompatActivity {
                                 ong.setEndereco(textoEndereco);
                                 ong.setEmail(textoEmail);
                                 ong.setResponsavel(textoResponsavel);
+                                ong.setDesativado(false);
                                 ong.setSenha(textoSenha);
 
                                 cadastrarONG(ong, enderecoONG);

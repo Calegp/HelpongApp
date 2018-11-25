@@ -21,8 +21,6 @@ import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
 import com.tcc.camilaprestes.helpongapp.model.Organizacao;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConfiguracoesONGActivity extends AppCompatActivity {
 
@@ -56,7 +54,7 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(ConfiguracoesONGActivity.this);
 
                 dialog.setTitle("Confirmar exclusão");
-                dialog.setMessage("Deseja essa conta?");
+                dialog.setMessage("Deseja excluir essa conta?");
 
                 dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
@@ -134,6 +132,33 @@ public class ConfiguracoesONGActivity extends AppCompatActivity {
             exibirMensagem("Digite o nome da ONG");
         }
 
+    }
+
+    public void desativarAtivarOng(View view) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(ConfiguracoesONGActivity.this);
+
+        dialog.setTitle("Confirmar desativação/ativação");
+        dialog.setMessage("Deseja desativar/ativar a conta?");
+
+        dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Organizacao ong = new Organizacao();
+                ong.setId(idONGLogado);
+                if (ong.isDesAtivado()) {
+                    ong.setDesativado(false);
+                } else {
+                    ong.setDesativado(true);
+                }
+                ong.salvar();
+                finish();
+            }
+        });
+
+        dialog.setNegativeButton("Não", null);
+
+        dialog.create();
+        dialog.show();
     }
 
     private void exibirMensagem(String texto){

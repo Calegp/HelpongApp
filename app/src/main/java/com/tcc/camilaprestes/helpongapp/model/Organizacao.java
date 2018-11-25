@@ -12,6 +12,7 @@ public class Organizacao {
     private String email;
     private String responsavel;
     private String senha;
+    private boolean desativado;
 
     public Organizacao() {
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
@@ -89,5 +90,13 @@ public class Organizacao {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public boolean isDesAtivado() {
+        return desativado;
+    }
+
+    public void setDesativado(boolean desativado) {
+        this.desativado = desativado;
     }
 }
