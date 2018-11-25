@@ -1,4 +1,4 @@
-package com.tcc.camilaprestes.helpongapp.activity;
+package com.tcc.camilaprestes.helpongapp.activity.ong_activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,19 +12,13 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.tcc.camilaprestes.helpongapp.R;
-import com.tcc.camilaprestes.helpongapp.activity.ong_activities.AnunciosONGActivity;
-import com.tcc.camilaprestes.helpongapp.activity.ong_activities.ConfiguracoesONGActivity;
-import com.tcc.camilaprestes.helpongapp.activity.ong_activities.ItensOngActivity;
-import com.tcc.camilaprestes.helpongapp.activity.ong_activities.NovoAnuncioONGActivity;
-import com.tcc.camilaprestes.helpongapp.activity.ong_activities.NovoItemONGActivity;
-import com.tcc.camilaprestes.helpongapp.activity.ong_activities.NovoPontoColetaActivity;
-import com.tcc.camilaprestes.helpongapp.activity.ong_activities.PontosColetaActivity;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 
 public class PerfilOngActivity extends AppCompatActivity {
 
     private FirebaseAuth autenticacao;
     private Button botaoItens, botaoAnuncios, botaoPontosColeta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +67,7 @@ public class PerfilOngActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menuSair:
                 deslogarONG();
                 break;
@@ -95,29 +89,28 @@ public class PerfilOngActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void deslogarONG(){
-        try{
+    private void deslogarONG() {
+        try {
             autenticacao.signOut();
             finish();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void abrirConfiguracoes(){
+    private void abrirConfiguracoes() {
         startActivity(new Intent(PerfilOngActivity.this, ConfiguracoesONGActivity.class));
     }
 
-    private void abrirNovoItem(){
+    private void abrirNovoItem() {
         startActivity(new Intent(PerfilOngActivity.this, NovoItemONGActivity.class));
     }
 
-    private void abrirNovoAnuncio(){
+    private void abrirNovoAnuncio() {
         startActivity(new Intent(PerfilOngActivity.this, NovoAnuncioONGActivity.class));
     }
 
-    private void abrirNovoPontoColeta(){
+    private void abrirNovoPontoColeta() {
         startActivity(new Intent(PerfilOngActivity.this, NovoPontoColetaActivity.class));
     }
 

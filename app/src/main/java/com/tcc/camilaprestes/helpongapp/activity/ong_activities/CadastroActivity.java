@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.tcc.camilaprestes.helpongapp.R;
-import com.tcc.camilaprestes.helpongapp.activity.PerfilOngActivity;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 import com.tcc.camilaprestes.helpongapp.helper.OrganizacaoFirebase;
 import com.tcc.camilaprestes.helpongapp.model.EnderecoONG;

@@ -49,43 +49,32 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".activity.ong_activities.LoginActivity" />
         <activity android:name=".activity.ong_activities.CadastroActivity" />
-        <activity android:name=".activity.PerfilOngActivity" />
+        <activity android:name=".activity.ong_activities.PerfilOngActivity" />
         <activity
             android:name=".activity.ong_activities.ConfiguracoesONGActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
+            android:parentActivityName=".activity.ong_activities.PerfilOngActivity" />
         <activity
             android:name=".activity.ong_activities.NovoItemONGActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
+            android:parentActivityName=".activity.ong_activities.PerfilOngActivity" />
         <activity
             android:name=".activity.ong_activities.NovoAnuncioONGActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
+            android:parentActivityName=".activity.ong_activities.PerfilOngActivity" />
         <activity
             android:name=".activity.ong_activities.NovoPontoColetaActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
+            android:parentActivityName=".activity.ong_activities.PerfilOngActivity" />
         <activity
             android:name=".activity.ong_activities.AnunciosONGActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
+            android:parentActivityName=".activity.ong_activities.PerfilOngActivity" />
         <activity
             android:name=".activity.ong_activities.PontosColetaActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
+            android:parentActivityName=".activity.ong_activities.PerfilOngActivity" />
         <activity
             android:name=".activity.ong_activities.ItensOngActivity"
-            android:parentActivityName=".activity.PerfilOngActivity" />
+            android:parentActivityName=".activity.ong_activities.PerfilOngActivity" />
         <activity
             android:name=".activity.user_activities.PerfilOngUsuarioActivity"
             android:parentActivityName=".activity.MapsActivity" />
 
-        <activity
-            android:name=".activity.user_activities.ItemOngUsuarioActivity"
-            android:parentActivityName=".activity.user_activities.PerfilOngUsuarioActivity" />
-
-        <activity
-            android:name=".activity.user_activities.AnuncioOngUsuarioActivity"
-            android:parentActivityName=".activity.user_activities.PerfilOngUsuarioActivity" />
-
-        <activity
-            android:name=".activity.user_activities.PontoColetaOngUsuarioActivity"
-            android:parentActivityName=".activity.user_activities.PerfilOngUsuarioActivity" />
     </application>
 
 </manifest>

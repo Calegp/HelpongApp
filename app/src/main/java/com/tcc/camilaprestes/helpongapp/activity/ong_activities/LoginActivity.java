@@ -14,7 +14,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tcc.camilaprestes.helpongapp.R;
-import com.tcc.camilaprestes.helpongapp.activity.PerfilOngActivity;
 import com.tcc.camilaprestes.helpongapp.helper.ConfiguracaoFirebase;
 
 public class LoginActivity extends AppCompatActivity {
