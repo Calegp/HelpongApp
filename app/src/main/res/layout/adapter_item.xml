@@ -8,7 +8,7 @@
         android:id="@+id/textTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Material"
+        android:text="@string/tipo_item"
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp"
         android:textStyle="bold" />
@@ -18,7 +18,7 @@
         android:layout_width="402dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Jornal"
+        android:text="@string/item"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="16sp"
         android:textStyle="bold" />
