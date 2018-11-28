@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_degrade"
     tools:context=".activity.ong_activities.NovoAnuncioONGActivity">
 
     <include
@@ -41,7 +42,7 @@
         <Button
             android:id="@+id/buttonAcesso2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="66dp"
             android:onClick="validarDadosAnuncio"
             android:padding="16dp"
             android:text="Salvar"

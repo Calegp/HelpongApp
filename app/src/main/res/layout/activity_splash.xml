@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@drawable/background_degrade"
     tools:context=".activity.SplashActivity">
 
     <ImageView
@@ -46,7 +46,7 @@
         android:lineSpacingExtra="10sp"
         android:text="@string/ajude_quem_ajuda_seu_amigo"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
